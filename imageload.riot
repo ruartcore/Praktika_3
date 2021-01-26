@@ -1,0 +1,51 @@
+<imageload>
+
+  <figure class="tile" style="{ item.style }" each={ item in items }>
+    <img onload="imgLoaded(this)" src="{ item.urls.min }">
+  </figure>
+
+
+  <script> 
+var self = this;
+this.on('mount', function() {
+  let res = request();
+  mainFn().then((res) => {
+    console.log(res.results);
+    self.items = res.results;
+    for(let i in self.items) {
+      self.items[i].style = `
+      background-color:rgba(${rand(0, 255)},${rand(0, 255)},${rand(0, 255)},0.3);
+      min-height: ${rand(50, 400)}px
+      `;
+    }
+    self.update();
+  });
+});
+window.onscroll = function() {
+  let scroll_top = window.pageYOffset || document.documentElement.scrollTop;
+  if(scroll_top >= document.getElementsByClassName('container')[0].scrollHeight) {
+    window.scrollTo(0, document.getElementsByClassName('container')[0].scrollHeight - 1700);
+    return;
+  }
+  if(scroll_top >= document.getElementsByClassName('container')[0].scrollHeight - 700) {
+    page++;
+    window.scrollTo(0, document.getElementsByClassName('container')[0].scrollHeight - 1700);
+    let res = request();
+    mainFn().then((res) => {
+      for(let i in res.results) {
+        self.items.push(res.results[i]);
+        self.items[self.items.length - 1].style = `
+            background-color:rgba(${rand(0, 255)},${rand(0, 255)},${rand(0, 255)},0.3);
+            min-height: ${rand(50, 400)}px
+            `;
+      }
+      self.update()
+    });
+  }
+}
+  </script>
+
+</imageload>
+<figure>
+  <img onload="imgLoaded(this)" src="{ item.urls.raw }">
+</figure>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="initial-scale=1, viewport-fit=cover">
+	<script type="text/javascript" src="./js/pageCount.js"></script>
+	<script type="text/javascript" src="./js/request.js"></script>
+	<script type="text/javascript" src="./js/imgLoader.js"></script>
+	<script type="text/javascript" src="./js/imgCache.js"></script>
+	<script type="text/javascript" src="./js/randomColor.js"></script>
+	<script src = "https://cdn.jsdelivr.net/npm/riot@3.13/riot+compiler.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="./css/loader.css" />
+	<link rel="stylesheet" type="text/css" href="./css/css_anim.css" />
+	<link rel="stylesheet" type="text/css" href="./css/style.css" />
+	<title>Frontend</title>
+</head>
+
+<body>
+
+	<div class="container">
+			<section class="content content-tiles">
+
+				<h1>Заголовок</h1>
+				<h2>Мощный дрон с записью 4К видео, мощной батареей <br >и продвинутым автопилотом.</h2>
+				<section class="section-tiles">
+					<imageload></imageload>
+				</section>
+			</section>
+				<loader></loader>
+	</div>
+	<script type="riot/tag" src="/imageload.riot"></script>
+	<script type="riot/tag" src="/loader.riot"></script>
+
+
+    <script type="text/javascript">
+     riot.mount('imageload', {
+     });
+     riot.mount('loader', {
+     });
+    </script>
+</body>
+
+</html>
